@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+        // message: "hello world",
+        // message: "<strong>hello world</strong>",
+        message: "hello world",
+        // disable: true
+        show: true,
+        name: 'title',
+        // event: 'click'
+        event: 'mouseenter'
+        };
+      },
+      methods: {
+        handleClick(){
+            // alert('click')
+            console.log('click')
+        }
+      },
+    // template: "<div>{{message}}</div>",
+    // template: `<div v-html="message"></div>`,
+    // template: `<div v-bind:title="message">{{message}}</div>`,
+    // template: `<input v-bind:disabled="disable"/>`
+    // template: `<div>{{'a' + 'b'}}</div>`
+    // template: `<div>{{Math.max(1,2)}}</div>`
+    // template: `<div v-once>{{message}}</div>` // vm.$data.message = '123' vm.message = '456'
+    // template: `<div v-if="show">{{message}}</div>`
+    // template: `<div v-on:click="handleClick" v-bind:title="message">{{message}}</div>`
+    // template: `<div @click="handleClick" :title="message">{{message}}</div>`
+    // template: `<div @click="handleClick" :[name]="message">{{message}}</div>`
+    // template: `<div @[event]="handleClick" :[name]="message">{{message}}</div>`
+    template: `
+        <form action="https://www.baidu.com" @click.prevent="handleClick">
+            <button type="submit">提交</button>
+        </form>
+    `
+    });
+
+    const vm = app.mount("#root");
+  </script>
+</html>

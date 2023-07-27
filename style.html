@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .red{
+            color: red
+        }
+        .green{
+            color: green
+        }
+    </style>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                classString: 'red',
+                classObject: {red: true, green: true},
+                classArray: ['red', 'green', {brown: true}],
+                styleString: 'color: yellow;',
+                styleObject: {
+                    color: 'blue',
+                    background: 'yellow'
+                }
+            }
+        },
+    //   template: `<div class="red">Hello World</div>`
+    // vm.$data.classString = 'green'
+    // template: `<div :class="classString">Hello World</div>`
+    // template: `<div :class="classObject">Hello World</div>`
+    // template: `<div :class="classArray">Hello World</div>`
+    // template: `
+    //   <div :class="classString">
+    //     Hello World
+    //     <demo class="green" />
+    //   </div>
+    // `
+    // template: `
+    //   <div style="color: yellow;">
+    //     Hello World
+    //   </div>
+    // `
+    // });
+    // template: `
+    //   <div :style="styleString">
+    //     Hello World
+    //   </div>
+    // `
+    // });
+    template: `
+      <div :style="styleObject">
+        Hello World
+      </div>
+    `
+    });
+
+    // app.component('demo', {
+    //     template: `<div class="green">single</div>`
+    // })
+    // app.component('demo', {
+    //     template: `<div>single</div>`
+    // })
+    app.component('demo', {
+        template: `
+          <div :class="$attrs.class">one</div>
+          <div>two</div>
+        `
+    })
+
+    const vm = app.mount("#root");
+  </script>
+</html>
